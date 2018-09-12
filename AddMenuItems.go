@@ -79,11 +79,9 @@ func main() {
 	PrintError(err)
 
 	// Add values from CSV into the insert query
-	for i, item := range menuItems {
+	for _, item := range menuItems {
 		_, err := sb.WriteString(fmt.Sprintf(insertQuery, item.Day, item.Dinner, item.Lunch, item.Date))
-		if i < len(menuItems)-1 {
-			sb.WriteString(",")
-		}
+
 		PrintError(err)
 	}
 	fmt.Println(sb.String())
